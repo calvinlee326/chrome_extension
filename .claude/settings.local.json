@@ -3,7 +3,10 @@
     "allow": [
       "mcp__ide__getDiagnostics",
       "Bash(gh auth:*)",
-      "Bash(git:*)"
+      "Bash(git:*)",
+      "Bash(gh repo:*)",
+      "Bash(brew upgrade:*)",
+      "Bash(ls -la /Users/chunchenglee/Desktop/Projects/Fullstack-Path/chrome_extension/icon*.png)"
     ]
   }
 }

@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 10px;
     font-family: Arial, Helvetica, sans-serif;
+    min-width: 400px;
 }
 
 input {
@@ -25,4 +26,21 @@ button {
     padding-bottom: 10px;
     border: none;
     
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+li {
+    margin-top: 5px;
+}
+
+a{
+    color: #5f9341;
+}
+
+li a {
+    color: #5f9341;
 }
