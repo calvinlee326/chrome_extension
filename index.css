@@ -1,64 +1,214 @@
 :root {
-    --brand-color: #5f9341;
+    --brand: #5f9341;
+    --brand-dark: #4a7432;
+    --danger: #d94f4f;
+    --danger-dark: #b83c3c;
+    --bg: #f5f7f4;
+    --surface: #ffffff;
+    --border: #dde5d8;
+    --text: #1e2a18;
+    --text-muted: #6b7c63;
+    --radius: 8px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    margin: 0;
-    padding: 10px;
-    font-family: Arial, Helvetica, sans-serif;
-    min-width: 400px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+    background: var(--bg);
+    color: var(--text);
+    width: 380px;
+    min-height: 200px;
 }
 
-input {
-    color: var(--brand-color);
-    padding: 10px;
-    box-sizing: border-box;
-    border: 1px solid var(--brand-color);
-    border-radius: 4px;
+/* ── Header ── */
+header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    background: var(--brand);
+    color: white;
+}
+
+.logo {
+    width: 28px;
+    height: 28px;
+}
+
+header h1 {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+/* ── Main ── */
+main {
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* ── Input ── */
+.input-row input {
     width: 100%;
-    margin-bottom: 5px;
+    padding: 9px 12px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
     font-family: inherit;
+    font-size: 13px;
+    color: var(--text);
+    background: var(--surface);
+    transition: border-color 0.15s;
 }
 
-input:focus {
-    outline: 2px solid var(--brand-color);
-    outline-offset: 2px;
+.input-row input:focus {
+    outline: none;
+    border-color: var(--brand);
+}
+
+.input-row input::placeholder {
+    color: var(--text-muted);
+}
+
+/* ── Actions row ── */
+.actions-row {
+    display: flex;
+    gap: 8px;
 }
 
 button {
-    background-color: var(--brand-color);
-    color: white;
-    padding: 10px 20px;
-    border: 1px solid var(--brand-color);
-    border-radius: 4px;
-    cursor: pointer;
-    margin-right: 5px;
+    flex: 1;
+    padding: 8px 12px;
+    border: none;
+    border-radius: var(--radius);
     font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.15s, opacity 0.15s;
 }
 
-button:hover {
-    opacity: 0.85;
+#input-btn,
+#tab-btn {
+    background: var(--brand);
+    color: white;
 }
 
-button:focus {
-    outline: 2px solid var(--brand-color);
-    outline-offset: 2px;
+#input-btn:hover,
+#tab-btn:hover {
+    background: var(--brand-dark);
 }
 
 #delete-btn {
-    background-color: white;
-    color: var(--brand-color);
+    background: #fff0f0;
+    color: var(--danger);
+    border: 1.5px solid #f5c6c6;
+    flex: 0 0 auto;
+    padding: 8px 14px;
 }
 
+#delete-btn:hover {
+    background: var(--danger);
+    color: white;
+    border-color: var(--danger);
+}
+
+button:focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 2px;
+}
+
+/* ── Leads section ── */
+.leads-section {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.leads-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+}
+
+.leads-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--text-muted);
+}
+
+.lead-count {
+    background: var(--brand);
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 1px 7px;
+    border-radius: 20px;
+}
+
+/* ── List ── */
 ul {
-    list-style-type: none;
-    padding-left: 0;
+    list-style: none;
+    padding: 0;
+    max-height: 260px;
+    overflow-y: auto;
+}
+
+ul::-webkit-scrollbar {
+    width: 4px;
+}
+
+ul::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+ul::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
 }
 
 li {
-    margin-top: 5px;
+    border-bottom: 1px solid var(--border);
 }
 
-a {
-    color: var(--brand-color);
+li:last-child {
+    border-bottom: none;
+}
+
+li a {
+    display: block;
+    padding: 9px 12px;
+    color: var(--brand-dark);
+    text-decoration: none;
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: background-color 0.1s;
+}
+
+li a:hover {
+    background: var(--bg);
+    color: var(--brand);
+}
+
+.empty-state {
+    padding: 20px 12px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 13px;
+    border-bottom: none;
 }

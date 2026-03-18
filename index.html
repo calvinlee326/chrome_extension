@@ -7,12 +7,33 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <a href="https://www.google.com">Home</a>
-        <input type="text" id="input-el">
-        <button id="input-btn">SAVE INPUT</button>
-        <button id="tab-btn">SAVE TAB</button>
-        <button id="delete-btn">DELETE</button>
-        <ul id="ul-el"></ul>
+        <header>
+            <img src="icon48.png" alt="Lead Tracker" class="logo">
+            <h1>Lead Tracker</h1>
+        </header>
+
+        <main>
+            <div class="input-row">
+                <input type="text" id="input-el" placeholder="Paste a URL or type a note...">
+            </div>
+
+            <div class="actions-row">
+                <button id="input-btn">Save Input</button>
+                <button id="tab-btn">Save Tab</button>
+                <button id="delete-btn" title="Double-click to clear all leads">Delete All</button>
+            </div>
+
+            <section class="leads-section">
+                <div class="leads-header">
+                    <span class="leads-label">Saved Leads</span>
+                    <span id="lead-count" class="lead-count">0</span>
+                </div>
+                <ul id="ul-el">
+                    <li class="empty-state">No leads saved yet.</li>
+                </ul>
+            </section>
+        </main>
+
         <script src="index.js"></script>
     </body>
 </html>
