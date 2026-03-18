@@ -5,9 +5,12 @@ A lightweight Chrome extension to save and manage URLs as leads directly from yo
 ## Features
 
 - **Save Tab** — captures the current active tab's URL with one click
-- **Save Input** — manually type and save any URL
+- **Save Input** — manually type and save any URL or note
 - **Persistent storage** — leads are saved to `localStorage` and persist across sessions
-- **Delete all** — double-click the DELETE button to clear all saved leads
+- **Delete All** — double-click the Delete All button to clear all saved leads
+- **Lead count badge** — header shows how many leads are currently saved
+- **Safe URL handling** — only `http://` and `https://` URLs are made clickable; `javascript:` and other unsafe protocols are blocked
+- **XSS protection** — all lead content is rendered via DOM APIs, never raw `innerHTML`
 
 ## Project Structure
 
@@ -33,10 +36,18 @@ chrome_extension/
 
 Click the extension icon in your toolbar to open the popup.
 
-- Type a URL in the input field and click **SAVE INPUT**
-- Or click **SAVE TAB** to save the current tab's URL
+- Type a URL in the input field and click **Save Input**
+- Or click **Save Tab** to save the current tab's URL automatically
 - Click any saved lead to open it in a new tab
-- Double-click **DELETE** to clear all leads
+- Double-click **Delete All** to clear all leads
+
+## Security
+
+- Input is trimmed and validated before saving — blank entries are rejected
+- Only `http://` and `https://` URLs are set as link `href` values; all others are rendered as plain text
+- All leads rendered with `document.createElement` + `textContent` to prevent XSS
+- `localStorage` reads are wrapped in `try/catch` — corrupted data is discarded gracefully instead of crashing the extension
+- Links opened with `target="_blank"` include `rel="noopener noreferrer"` to prevent tab-napping
 
 ## Tech Stack
 
